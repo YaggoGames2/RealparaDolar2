@@ -1,32 +1,33 @@
-const valorReal = document.getElementById("valorReal");//certo
-const Moedas = document.getElementById("Moedas"); // certo
-const resultado = document.getElementById("resultado"); //certo
-const cotacao = { Euro: 6.40, Dolar: 5.67 } //certo
+function Converter() {
+    const valorConverter = document.getElementById("bloco_one");
+    // const valorConverter = document.querySelector("#bloco_one");
+    const opcaoMoeda = document.getElementById("form__money-option");
+    const resultado = document.querySelector("#form__resultado");
 
-let valorConvertido = ""
-let simbolo =""
+    // const cotacaoEuro = 6.31;
+    // const cotacaoDolar = 5.61;
 
-function CalcularMoeda() {
-    document.getElementById("resultado").value = resultado.toFixed(2);
-}
+    let cotacao;
+    let simbolo;
 
-    function Euro(valorReal, cotacao) {
-        return resultado = (valorReal / cotacao.Euro).toFixed(2);
+    if (opcaoMoeda.value == "" || valorConverter.value == "") {
+        alert("Escolha a moeda ou digite um valor válido!!!");
+    } else {
+        if (opcaoMoeda.value == "dolar") {
+            cotacao = 5.61;
+            simbolo = "U$";
+        } else {
+            cotacao = 6.31;
+            simbolo = "€";
+        }
+
+        resultado.style.padding = "20px";
+        resultado.style.color = "green";
+        resultado.style.borderColor = "black";
+        resultado.style.borderWidth = "1px";
+        resultado.style.borderStyle = "solod";
+        resultado.style.fontWeight = "bold";
+
+        resultado.innerHTML =  (valorConverter.value / cotacao).toFixed(2) + simbolo;
     }
-
-    function Dolar(cotacao, valorReal) {
-
-        return resultado = (valorReal / cotacao.Dolar).toFixed(2);
-    }
-
-
-if (Moedas == "Dolar") {
-    simbolo = "U$";
-    valorConvertido = Dolar;
-}else (Moedas === "Euro"){
-    simbolo = "€";
-    valorConvertido = Euro;
 }
-
-resultado.textContent = `O valor é ${simbolo} ${valorConvertido}`;
-
